@@ -1216,11 +1216,11 @@
         </div>
         <div class="field">
           <label for="stub1Input">Stub 1 length</label>
-          <div class="control"><input type="number" id="stub1Input" min="24" max="480" step="1" value="78" inputmode="decimal"><span class="unit">in</span></div>
+          <div class="control"><input type="number" id="stub1Input" min="24" max="480" step="1" value="50" inputmode="decimal"><span class="unit">in</span></div>
         </div>
         <div class="field">
           <label for="stub3Input">Stub 3 length</label>
-          <div class="control"><input type="number" id="stub3Input" min="24" max="480" step="1" value="78" inputmode="decimal"><span class="unit">in</span></div>
+          <div class="control"><input type="number" id="stub3Input" min="24" max="480" step="1" value="50" inputmode="decimal"><span class="unit">in</span></div>
         </div>
         <div class="field wide">
           <label for="spanInput">Vault-to-precast distance</label>
@@ -1437,7 +1437,7 @@
   // ------------------------------------------------------------------
   // shared geometry: ONE break (rise) + ONE elbow angle drive both rows
   // ------------------------------------------------------------------
-  let ENTRY_LEN = 78 / 12, EXIT_LEN = 78 / 12; // Stub 1 / Stub 3 straights (default 78")
+  let ENTRY_LEN = 50 / 12, EXIT_LEN = 50 / 12; // Stub 1 / Stub 3 straights (default 50")
   const FLAT_HIGH_H = 6;                  // Stub 1 starts at 6'
   const MAX_SPACING = 4, ELBOW_CLEAR = 1; // stands: <= 4' apart, one within 1' of each elbow
   const Z_MIN = -6, Z_MAX = 8, ZC = (Z_MIN + Z_MAX) / 2;
@@ -1975,7 +1975,7 @@
 
     function stubLen(el){
       let v = parseFloat(el.value);
-      if (!isFinite(v) || v <= 0) v = 78;
+      if (!isFinite(v) || v <= 0) v = 50;
       v = Math.min(Math.max(v, 24), 480);
       return v / 12;
     }
@@ -2015,7 +2015,7 @@
   stub3Input.addEventListener('input', applyInputs);
 
   // write clamped values back only when the field is committed, so typing never fights the cursor
-  [[riseInput, 1, 72, 30], [stub1Input, 24, 480, 78], [stub3Input, 24, 480, 78], [spanInput, 10, 100, 50]].forEach(function(f){
+  [[riseInput, 1, 72, 30], [stub1Input, 24, 480, 50], [stub3Input, 24, 480, 50], [spanInput, 10, 100, 50]].forEach(function(f){
     f[0].addEventListener('change', function(){
       let v = parseFloat(f[0].value);
       if (!isFinite(v) || v <= 0){ f[0].value = f[3] == null ? '' : f[3]; return; }
